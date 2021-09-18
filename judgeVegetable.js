@@ -1,20 +1,20 @@
 function judgeVegetable(vegetables, metric) {
   // array = array of objects
-  // xtic = characteristic redness or plumpness
+  // metric = characteristic redness or plumpness
   let submitter = "?";
   let rCheck = []; // for redness
   let pCheck = []; // for plumpness
   for (let i = 0; i < vegetables.length; i++) {
-    rCheck.push(vegetables[i].redness);
-    pCheck.push(vegetables[i].plumpness);  
+    rCheck.push(vegetables[i][1]);
+    pCheck.push(vegetables[i][2]);  
   }
   let theBestR = (rCheck.sort( function(a, b) { return a - b } ))[rCheck.length - 1]; // to pick out the highest redness value
   let theBestP = (pCheck.sort( function(a, b) { return a - b } ))[pCheck.length - 1]; // to pick out the highest plumpness value  
   // to sort out who's behind the best value
   for (let i = 0; i < vegetables.length; i++) {
-    if (metric === Object.keys(vegetables[i])[1] && vegetables[i].redness === theBestR){
+    if (metric === Object.keys(vegetables[i])[1] && vegetables[i][1] === theBestR){
       submitter = vegetables[i].submitter;
-    } else if (metric === Object.keys(vegetables[i])[2] && vegetables[i].plumpness === theBestP){
+    } else if (metric === Object.keys(vegetables[i])[2] && vegetables[i][2] === theBestP){
       submitter = vegetables[i].submitter;
     } else {
       continue;
